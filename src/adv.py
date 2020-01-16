@@ -1,4 +1,6 @@
 from room import Room
+from player import Player
+
 
 # Declare all the rooms
 
@@ -49,3 +51,30 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+# create player
+# let player input name
+player = Player(input("please enter a name: "), room['outside'])
+print(player.current_room)
+
+# print(room['outside'].n_to)
+
+directions = ["n", "s", "e", "w"]
+
+# create basic repl loop
+while True:
+    # read command
+    cmd = input("~~> ").lower()
+    # check if n/s/e/w/q
+    if cmd in directions:
+        # make player travel in that direction
+        player.travel(cmd)
+    elif cmd == "q":
+        # quit
+        print("Goodbye!")
+        exit()
+        break
+    else:
+        print("i did not recognize that command")
+
+    # if so execute proper command
